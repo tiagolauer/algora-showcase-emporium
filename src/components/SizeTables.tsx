@@ -3,30 +3,28 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const SizeTables = () => {
   // Dados da tabela de casacos (baseado na imagem fornecida)
   const jacketSizes = [
-    { tamanho: "1", busto: "76", cintura: "60", quadril: "84", manga: "55" },
-    { tamanho: "2", busto: "80", cintura: "64", quadril: "88", manga: "56" },
-    { tamanho: "3", busto: "84", cintura: "68", quadril: "92", manga: "57" },
-    { tamanho: "4", busto: "88", cintura: "72", quadril: "96", manga: "58" },
-    { tamanho: "6", busto: "92", cintura: "76", quadril: "100", manga: "59" },
-    { tamanho: "8", busto: "96", cintura: "80", quadril: "104", manga: "60" },
-    { tamanho: "10", busto: "100", cintura: "84", quadril: "108", manga: "61" },
-    { tamanho: "12", busto: "104", cintura: "88", quadril: "112", manga: "62" },
-    { tamanho: "14", busto: "108", cintura: "92", quadril: "116", manga: "63" },
-    { tamanho: "16", busto: "112", cintura: "96", quadril: "120", manga: "64" }
+    { tamanho: "1", altura: "40", largura: "33", manga: "32" },
+    { tamanho: "2", altura: "42", largura: "35", manga: "35" },
+    { tamanho: "4", altura: "46", largura: "37", manga: "38" },
+    { tamanho: "6", altura: "47", largura: "39", manga: "42" },
+    { tamanho: "8", altura: "48", largura: "40", manga: "45" },
+    { tamanho: "10", altura: "50", largura: "43", manga: "49" },
+    { tamanho: "12", altura: "52", largura: "45", manga: "52" },
+    { tamanho: "14", altura: "54", largura: "47", manga: "55" },
+    { tamanho: "16", altura: "56", largura: "49", manga: "58" }
   ];
 
-  // Dados fictícios para tabela de calças
+  // Dados para tabela de calças (baseado nas proporções dos casacos)
   const pantsSizes = [
-    { tamanho: "1", cintura: "60", quadril: "84", entrepierna: "72", comprimento: "95" },
-    { tamanho: "2", cintura: "64", quadril: "88", entrepierna: "73", comprimento: "96" },
-    { tamanho: "3", cintura: "68", quadril: "92", entrepierna: "74", comprimento: "97" },
-    { tamanho: "4", cintura: "72", quadril: "96", entrepierna: "75", comprimento: "98" },
-    { tamanho: "6", cintura: "76", quadril: "100", entrepierna: "76", comprimento: "99" },
-    { tamanho: "8", cintura: "80", quadril: "104", entrepierna: "77", comprimento: "100" },
-    { tamanho: "10", cintura: "84", quadril: "108", entrepierna: "78", comprimento: "101" },
-    { tamanho: "12", cintura: "88", quadril: "112", entrepierna: "79", comprimento: "102" },
-    { tamanho: "14", cintura: "92", quadril: "116", entrepierna: "80", comprimento: "103" },
-    { tamanho: "16", cintura: "96", quadril: "120", entrepierna: "81", comprimento: "104" }
+    { tamanho: "1", cintura: "58", quadril: "68", entrepierna: "65", comprimento: "88" },
+    { tamanho: "2", cintura: "62", quadril: "72", entrepierna: "67", comprimento: "90" },
+    { tamanho: "4", cintura: "68", quadril: "78", entrepierna: "70", comprimento: "94" },
+    { tamanho: "6", cintura: "72", quadril: "82", entrepierna: "72", comprimento: "96" },
+    { tamanho: "8", cintura: "76", quadril: "86", entrepierna: "74", comprimento: "98" },
+    { tamanho: "10", cintura: "80", quadril: "90", entrepierna: "76", comprimento: "100" },
+    { tamanho: "12", cintura: "84", quadril: "94", entrepierna: "78", comprimento: "102" },
+    { tamanho: "14", cintura: "88", quadril: "98", entrepierna: "80", comprimento: "104" },
+    { tamanho: "16", cintura: "92", quadril: "102", entrepierna: "82", comprimento: "106" }
   ];
 
   return (
@@ -42,9 +40,8 @@ const SizeTables = () => {
               <thead>
                 <tr className="bg-muted/50">
                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Tamanho</th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Busto (cm)</th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Cintura (cm)</th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Quadril (cm)</th>
+                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Altura (cm)</th>
+                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Largura (cm)</th>
                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Manga (cm)</th>
                 </tr>
               </thead>
@@ -56,9 +53,8 @@ const SizeTables = () => {
                          {size.tamanho}
                        </span>
                      </td>
-                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.busto}</td>
-                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.cintura}</td>
-                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.quadril}</td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.altura}</td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.largura}</td>
                      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.manga}</td>
                    </tr>
                  ))}

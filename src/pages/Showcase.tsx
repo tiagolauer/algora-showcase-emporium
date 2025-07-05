@@ -3,6 +3,7 @@ import SizeFilter from "@/components/SizeFilter";
 import SizeTables from "@/components/SizeTables";
 import ProductCard from "@/components/ProductCard";
 import ProductModal from "@/components/ProductModal";
+import Footer from "@/components/Footer";
 
 // Importação das imagens
 import algoraLogo from "@/assets/algora-logo.png";
@@ -151,6 +152,9 @@ const Showcase = () => {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
       />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

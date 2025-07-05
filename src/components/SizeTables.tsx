@@ -34,63 +34,71 @@ const SizeTables = () => {
       {/* Tabela de Casacos */}
       <Card className="algora-card">
         <CardHeader className="algora-gradient text-primary-foreground">
-          <CardTitle className="text-xl font-bold text-center">Tabela de Medidas - Casacos</CardTitle>
+          <CardTitle className="text-lg sm:text-xl font-bold text-center">Tabela de Medidas - Casacos</CardTitle>
         </CardHeader>
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-muted/50">
-                  <th className="p-3 text-left font-semibold">Tamanho</th>
-                  <th className="p-3 text-center font-semibold">Busto (cm)</th>
-                  <th className="p-3 text-center font-semibold">Cintura (cm)</th>
-                  <th className="p-3 text-center font-semibold">Quadril (cm)</th>
-                  <th className="p-3 text-center font-semibold">Manga (cm)</th>
+                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Tamanho</th>
+                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Busto (cm)</th>
+                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Cintura (cm)</th>
+                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Quadril (cm)</th>
+                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Manga (cm)</th>
                 </tr>
               </thead>
               <tbody>
-                {jacketSizes.map((size, index) => (
-                  <tr key={size.tamanho} className={index % 2 === 0 ? "bg-background" : "bg-muted/20"}>
-                    <td className="p-3 font-medium text-primary">{size.tamanho}</td>
-                    <td className="p-3 text-center">{size.busto}</td>
-                    <td className="p-3 text-center">{size.cintura}</td>
-                    <td className="p-3 text-center">{size.quadril}</td>
-                    <td className="p-3 text-center">{size.manga}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </CardContent>
-      </Card>
+                 {jacketSizes.map((size, index) => (
+                   <tr key={size.tamanho} className={index % 2 === 0 ? "bg-background" : "bg-muted/20"}>
+                     <td className="p-2 sm:p-3 font-bold text-center">
+                       <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary text-primary-foreground text-sm sm:text-base font-bold">
+                         {size.tamanho}
+                       </span>
+                     </td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.busto}</td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.cintura}</td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.quadril}</td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.manga}</td>
+                   </tr>
+                 ))}
+               </tbody>
+             </table>
+           </div>
+         </CardContent>
+       </Card>
 
-      {/* Tabela de Calças */}
-      <Card className="algora-card">
-        <CardHeader className="algora-gradient text-primary-foreground">
-          <CardTitle className="text-xl font-bold text-center">Tabela de Medidas - Calças</CardTitle>
-        </CardHeader>
-        <CardContent className="p-0">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-muted/50">
-                  <th className="p-3 text-left font-semibold">Tamanho</th>
-                  <th className="p-3 text-center font-semibold">Cintura (cm)</th>
-                  <th className="p-3 text-center font-semibold">Quadril (cm)</th>
-                  <th className="p-3 text-center font-semibold">Entrepierna (cm)</th>
-                  <th className="p-3 text-center font-semibold">Comprimento (cm)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pantsSizes.map((size, index) => (
-                  <tr key={size.tamanho} className={index % 2 === 0 ? "bg-background" : "bg-muted/20"}>
-                    <td className="p-3 font-medium text-secondary">{size.tamanho}</td>
-                    <td className="p-3 text-center">{size.cintura}</td>
-                    <td className="p-3 text-center">{size.quadril}</td>
-                    <td className="p-3 text-center">{size.entrepierna}</td>
-                    <td className="p-3 text-center">{size.comprimento}</td>
-                  </tr>
-                ))}
+       {/* Tabela de Calças */}
+       <Card className="algora-card">
+         <CardHeader className="algora-gradient text-primary-foreground">
+           <CardTitle className="text-lg sm:text-xl font-bold text-center">Tabela de Medidas - Calças</CardTitle>
+         </CardHeader>
+         <CardContent className="p-0">
+           <div className="overflow-x-auto">
+             <table className="w-full text-sm">
+               <thead>
+                 <tr className="bg-muted/50">
+                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Tamanho</th>
+                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Cintura (cm)</th>
+                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Quadril (cm)</th>
+                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Entrepierna (cm)</th>
+                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Comprimento (cm)</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 {pantsSizes.map((size, index) => (
+                   <tr key={size.tamanho} className={index % 2 === 0 ? "bg-background" : "bg-muted/20"}>
+                     <td className="p-2 sm:p-3 font-bold text-center">
+                       <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-secondary text-secondary-foreground text-sm sm:text-base font-bold">
+                         {size.tamanho}
+                       </span>
+                     </td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.cintura}</td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.quadril}</td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.entrepierna}</td>
+                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.comprimento}</td>
+                   </tr>
+                 ))}
               </tbody>
             </table>
           </div>

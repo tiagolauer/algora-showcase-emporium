@@ -29,14 +29,14 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-hidden">
+      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-hidden p-4 sm:p-6">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-center text-foreground">
+          <DialogTitle className="text-lg sm:text-xl font-bold text-center text-foreground">
             {product.name}
           </DialogTitle>
         </DialogHeader>
         
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
           {/* Galeria de Imagens */}
           <div className="space-y-4">
             {/* Imagem Principal */}
@@ -102,17 +102,6 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
               </p>
             </div>
 
-            {/* Características */}
-            <div className="space-y-3">
-              <h3 className="text-lg font-semibold text-foreground">Características:</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>• Tecido de alta qualidade</li>
-                <li>• Corte anatômico para maior conforto</li>
-                <li>• Costuras reforçadas</li>
-                <li>• Fácil manutenção</li>
-                <li>• Design exclusivo Algora</li>
-              </ul>
-            </div>
 
             {/* Tamanhos Disponíveis */}
             <div className="space-y-3">

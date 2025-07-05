@@ -35,12 +35,12 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
 
   return (
     <Card 
-      className="algora-card cursor-pointer group overflow-hidden"
+      className="algora-card cursor-pointer group overflow-hidden h-full flex flex-col"
       onClick={handleCardClick}
     >
-      <CardContent className="p-0">
+      <CardContent className="p-0 flex-1 flex flex-col">
         {/* Carrossel de Imagens */}
-        <div className="relative aspect-square overflow-hidden">
+        <div className="relative aspect-square overflow-hidden flex-shrink-0">
           <img
             src={images[currentImageIndex]}
             alt={`${name} - Image ${currentImageIndex + 1}`}
@@ -52,25 +52,25 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
             <>
               <button
                 onClick={prevImage}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background/90 
+                className="absolute left-1 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background/90 
                           text-foreground p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" />
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background/90 
+                className="absolute right-1 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background/90 
                           text-foreground p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
               </button>
             </>
           )}
 
           {/* Indicador de Zoom */}
-          <div className="absolute top-2 right-2 bg-background/80 text-foreground p-1 rounded-full 
+          <div className="absolute top-1 right-1 bg-background/80 text-foreground p-1 rounded-full 
                           opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <ZoomIn className="w-4 h-4" />
+            <ZoomIn className="w-3 h-3 sm:w-4 sm:h-4" />
           </div>
 
           {/* Indicadores de Página */}
@@ -79,7 +79,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
               {images.map((_, index) => (
                 <div
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-colors ${
+                  className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-colors ${
                     index === currentImageIndex ? 'bg-primary' : 'bg-background/60'
                   }`}
                 />
@@ -89,22 +89,27 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
         </div>
 
         {/* Informações do Produto */}
-        <div className="p-4">
-          <h3 className="font-semibold text-foreground mb-3 text-center">{name}</h3>
+        <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between">
+          <h3 className="font-semibold text-foreground mb-2 text-center text-sm sm:text-base line-clamp-2">{name}</h3>
           
           {/* Tamanhos Disponíveis */}
           <div className="space-y-2">
-            <p className="text-sm font-medium text-muted-foreground">Tamanhos disponíveis:</p>
-            <div className="flex flex-wrap gap-1 justify-center">
-              {availableSizes.map((size) => (
+            <p className="text-xs sm:text-sm font-medium text-muted-foreground text-center">Tamanhos disponíveis:</p>
+            <div className="flex flex-wrap gap-1 justify-center min-h-[2rem]">
+              {availableSizes.slice(0, 6).map((size) => (
                 <span
                   key={size}
-                  className="px-2 py-1 text-xs font-medium rounded-full bg-primary text-primary-foreground
-                            shadow-sm hover:bg-primary/90 transition-colors"
+                  className="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs font-medium rounded-full bg-primary text-primary-foreground
+                            shadow-sm hover:bg-primary/90 transition-colors flex-shrink-0"
                 >
                   {size}
                 </span>
               ))}
+              {availableSizes.length > 6 && (
+                <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs font-medium rounded-full bg-muted text-muted-foreground">
+                  +{availableSizes.length - 6}
+                </span>
+              )}
             </div>
           </div>
         </div>

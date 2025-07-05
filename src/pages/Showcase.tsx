@@ -120,24 +120,24 @@ const Showcase = () => {
             <div className="xl:col-span-3 lg:col-span-2">
               {filteredProducts.length === 0 ? (
                 <div className="text-center py-12">
-                  <p className="text-lg text-muted-foreground">
+                  <p className="text-base sm:text-lg text-muted-foreground">
                     Nenhum produto encontrado com os filtros selecionados.
                   </p>
                 </div>
               ) : (
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map((product, index) => (
-              <div 
-                key={product.id} 
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <ProductCard
-                  {...product}
-                  onViewDetails={handleViewDetails}
-                />
-              </div>
-            ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 auto-rows-fr">
+                  {filteredProducts.map((product, index) => (
+                    <div 
+                      key={product.id} 
+                      className="animate-fade-in h-full"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <ProductCard
+                        {...product}
+                        onViewDetails={handleViewDetails}
+                      />
+                    </div>
+                  ))}
                 </div>
               )}
             </div>

@@ -8,8 +8,8 @@ import { useEffect } from "react";
 
 // Importação das imagens
 import algoraLogo from "@/assets/algora-logo.png";
-import pijama1a from "@/assets/pijama-set-1a.jpg";
-import pijama1b from "@/assets/pijama-set-1b.jpg";
+import pijama1a from "@/assets/conjunto-rosa-borboleta-1.png";
+import pijama1b from "@/assets/conjunto-rosa-borboleta-2.png";
 import pijama2a from "@/assets/pijama-set-2a.jpg";
 import pijama2b from "@/assets/pijama-set-2b.jpg";
 import pijama3a from "@/assets/pijama-set-3a.jpg";
@@ -26,7 +26,7 @@ const Showcase = () => {
   const products = [
     {
       id: 1,
-      name: "Conjunto Elegance Purple",
+      name: "Conjunto Rosa Borboleta",
       images: [pijama1a, pijama1b],
       availableSizes: ["2", "4", "6", "8", "10", "12", "14", "Sob encomenda"]
     },

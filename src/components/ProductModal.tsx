@@ -29,7 +29,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-hidden p-4 sm:p-6">
+      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         <DialogHeader>
           <DialogTitle className="text-lg sm:text-xl font-bold text-center text-foreground">
             {product.name}
@@ -94,15 +94,6 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
 
           {/* Informações do Produto */}
           <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-2">{product.name}</h2>
-              <p className="text-muted-foreground">
-                Conjunto de pijama de alta qualidade, confeccionado com materiais premium 
-                para garantir máximo conforto e elegância. Design moderno e atemporal.
-              </p>
-            </div>
-
-
             {/* Tamanhos Disponíveis */}
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-foreground">Tamanhos Disponíveis:</h3>
@@ -117,17 +108,6 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
                   </span>
                 ))}
               </div>
-            </div>
-
-            {/* Cuidados */}
-            <div className="space-y-3">
-              <h3 className="text-lg font-semibold text-foreground">Cuidados:</h3>
-              <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>• Lavar à máquina em água fria</li>
-                <li>• Não usar alvejante</li>
-                <li>• Secar à sombra</li>
-                <li>• Passar ferro em temperatura baixa</li>
-              </ul>
             </div>
 
             {/* Botão de Contato */}

@@ -13,14 +13,31 @@ interface ProductCardProps {
 const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: ProductCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  const [animating, setAnimating] = useState(false);
+  const [animationDirection, setAnimationDirection] = useState<"left" | "right" | null>(null);
+
   const nextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    if (animating) return;
+    setAnimationDirection("left");
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      setAnimating(false);
+      setAnimationDirection(null);
+    }, 300); // duração da animação
   };
 
   const prevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    if (animating) return;
+    setAnimationDirection("right");
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+      setAnimating(false);
+      setAnimationDirection(null);
+    }, 300); // duração da animação
   };
 
   const handleCardClick = () => {
@@ -33,6 +50,26 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
     });
   };
 
+  // Variáveis para swipe
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX = e.changedTouches[0].screenX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX = e.changedTouches[0].screenX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX - touchEndX > 50) {
+      nextImage(e as any);
+    } else if (touchEndX - touchStartX > 50) {
+      prevImage(e as any);
+    }
+  };
+
   return (
     <Card 
       className="algora-card cursor-pointer group overflow-hidden h-full flex flex-col"
@@ -40,11 +77,15 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
     >
       <CardContent className="p-0 flex-1 flex flex-col">
         {/* Carrossel de Imagens */}
-        <div className="relative aspect-square overflow-hidden flex-shrink-0">
+        <div className="relative aspect-square overflow-hidden flex-shrink-0"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <img
             src={images[currentImageIndex]}
             alt={`${name} - Image ${currentImageIndex + 1}`}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${animating ? (animationDirection === "left" ? "animate-slide-out-left" : "animate-slide-out-right") : ""}`}
           />
           
           {/* Controles do Carrossel */}

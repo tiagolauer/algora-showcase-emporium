@@ -16,15 +16,31 @@ interface ProductModalProps {
 
 const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [animationDirection, setAnimationDirection] = useState<"left" | "right" | null>(null);
 
   if (!product) return null;
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
+    if (animating) return;
+    setAnimationDirection("left");
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
+      setAnimating(false);
+      setAnimationDirection(null);
+    }, 300);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
+    if (animating) return;
+    setAnimationDirection("right");
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
+      setAnimating(false);
+      setAnimationDirection(null);
+    }, 300);
   };
 
   return (
@@ -48,7 +64,23 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
           {/* Galeria de Imagens */}
           <div className="space-y-4">
             {/* Imagem Principal */}
-            <div className="relative aspect-square overflow-hidden rounded-lg bg-muted">
+            <div className="relative aspect-square overflow-hidden rounded-lg bg-muted"
+              onTouchStart={(e) => {
+                (window as any).modalTouchStartX = e.changedTouches[0].screenX;
+              }}
+              onTouchMove={(e) => {
+                (window as any).modalTouchEndX = e.changedTouches[0].screenX;
+              }}
+              onTouchEnd={(e) => {
+                const start = (window as any).modalTouchStartX || 0;
+                const end = (window as any).modalTouchEndX || 0;
+                if (start - end > 50) {
+                  nextImage();
+                } else if (end - start > 50) {
+                  prevImage();
+                }
+              }}
+            >
               <img
                 src={product.images[currentImageIndex]}
                 alt={`${product.name} - Image ${currentImageIndex + 1}`}

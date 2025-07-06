@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 
 interface ProductModalProps {
   product: {
@@ -30,6 +30,15 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6">
+        {/* Botão de Fechar com Seta */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 left-4 z-10 bg-background/90 hover:bg-background 
+                     text-foreground p-3 rounded-full shadow-md transition-colors"
+        >
+          <ArrowLeft className="w-6 h-6" />
+        </button>
+        
         <DialogHeader>
           <DialogTitle className="text-lg sm:text-xl font-bold text-center text-foreground">
             {product.name}

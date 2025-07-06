@@ -96,20 +96,15 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
           <div className="space-y-2">
             <p className="text-xs sm:text-sm font-medium text-muted-foreground text-center">Tamanhos disponíveis:</p>
             <div className="flex flex-wrap gap-1 justify-center min-h-[2rem]">
-              {availableSizes.slice(0, 6).map((size) => (
+              {availableSizes.map((size) => (
                 <span
                   key={size}
-                  className="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs font-medium rounded-full bg-primary text-primary-foreground
-                            shadow-sm hover:bg-primary/90 transition-colors flex-shrink-0"
+                  className="w-6 h-6 sm:w-7 sm:h-7 text-xs font-semibold rounded-full bg-primary text-primary-foreground
+                            shadow-sm hover:bg-primary/90 transition-colors flex-shrink-0 flex items-center justify-center"
                 >
                   {size}
                 </span>
               ))}
-              {availableSizes.length > 6 && (
-                <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs font-medium rounded-full bg-muted text-muted-foreground">
-                  +{availableSizes.length - 6}
-                </span>
-              )}
             </div>
           </div>
         </div>

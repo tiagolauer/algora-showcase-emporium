@@ -9,7 +9,6 @@ const SIZES = ["1", "2", "3", "4", "6", "8", "10", "12", "14", "16", "Sob encome
 
 const SizeFilter = ({ onFilterChange }: SizeFilterProps) => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
 
   const toggleSize = (size: string) => {
     const newSizes = selectedSizes.includes(size)
@@ -27,20 +26,14 @@ const SizeFilter = ({ onFilterChange }: SizeFilterProps) => {
 
   return (
     <div className="bg-card rounded-lg p-6 shadow-md sticky top-4">
-      <div className="flex items-center justify-between mb-4">
+      <div className="mb-4">
         <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
           <Filter className="w-5 h-5" />
           Filtrar por Tamanho
         </h3>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden algora-btn-primary px-3 py-1 text-sm rounded-md"
-        >
-          {isOpen ? 'Fechar' : 'Abrir'}
-        </button>
       </div>
       
-      <div className={`space-y-2 ${isOpen ? 'block' : 'hidden lg:block'}`}>
+      <div className="space-y-2">
         <div className="flex flex-wrap gap-2">
           {SIZES.map((size) => (
             <button

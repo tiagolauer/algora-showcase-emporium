@@ -11,9 +11,8 @@ const Footer = () => {
             <img 
               src={algoraLogo} 
               alt="Algora Logo" 
-              className="h-8 w-auto"
+              className="h-24 w-auto"
             />
-            <span className="text-xl font-bold text-foreground">Algora</span>
           </div>
 
           {/* Texto descritivo */}

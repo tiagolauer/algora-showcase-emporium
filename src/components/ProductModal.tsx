@@ -130,9 +130,14 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
 
             {/* Botão de Contato */}
             <div className="pt-4 border-t border-border">
-              <button className="w-full algora-btn-primary py-3 rounded-lg font-semibold">
+              <a
+                href={`https://wa.me/5547988549133?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20saber%20a%20disponibilidade%20do%20${encodeURIComponent(product.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full algora-btn-primary py-3 rounded-lg font-semibold inline-block text-center"
+              >
                 Entrar em Contato para Pedido
-              </button>
+              </a>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import SizeTables from "@/components/SizeTables";
 import ProductCard from "@/components/ProductCard";
 import ProductModal from "@/components/ProductModal";
 import Footer from "@/components/Footer";
+import { useEffect } from "react";
 
 // Importação das imagens
 import algoraLogo from "@/assets/algora-logo.png";
@@ -71,27 +72,38 @@ const Showcase = () => {
   const handleViewDetails = (product: any) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
+    window.history.pushState({}, "", `?produto=${product.id}`);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedProduct(null);
+    window.history.pushState({}, "", window.location.pathname);
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const produtoId = params.get("produto");
+    if (produtoId) {
+      const found = products.find(p => p.id === Number(produtoId));
+      if (found) {
+        setSelectedProduct(found);
+        setIsModalOpen(true);
+      }
+    }
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header com Logo */}
       <header className="bg-card shadow-sm border-b border-border">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center justify-center gap-4 animate-fade-in">
-            <img 
-              src={algoraLogo} 
-              alt="Algora Logo" 
-              className="h-16 w-auto animate-float"
-            />
+          <div className="flex items-center justify-center gap-4">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-              Mostruário da Algora
+              Mostruário da
             </h1>
+            <img src={algoraLogo} alt="Logo Algora" className="h-24 md:h-32" />
           </div>
         </div>
       </header>

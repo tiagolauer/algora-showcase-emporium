@@ -95,16 +95,26 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
           {/* Tamanhos Disponíveis */}
           <div className="space-y-2">
             <p className="text-xs sm:text-sm font-medium text-muted-foreground text-center">Tamanhos disponíveis:</p>
-            <div className="flex flex-wrap gap-1 justify-center min-h-[2rem]">
-              {availableSizes.map((size) => (
-                <span
-                  key={size}
-                  className="w-6 h-6 sm:w-7 sm:h-7 text-xs font-semibold rounded-full bg-primary text-primary-foreground
-                            shadow-sm hover:bg-primary/90 transition-colors flex-shrink-0 flex items-center justify-center"
-                >
-                  {size}
+            <div className="flex flex-col gap-1 items-center min-h-[2rem]">
+              {/* Números */}
+              <div className="flex flex-wrap gap-1 justify-center">
+                {availableSizes.filter(size => size !== "Sob encomenda").map((size) => (
+                  <span
+                    key={size}
+                    className="w-6 h-6 sm:w-7 sm:h-7 text-xs font-semibold rounded-full bg-primary text-primary-foreground
+                              shadow-sm hover:bg-primary/90 transition-colors flex-shrink-0 flex items-center justify-center"
+                  >
+                    {size}
+                  </span>
+                ))}
+              </div>
+              {/* Sob encomenda */}
+              {availableSizes.includes("Sob encomenda") && (
+                <span className="px-2 py-1 text-xs font-medium rounded-full bg-accent text-accent-foreground
+                                shadow-sm hover:bg-accent/90 transition-colors">
+                  Sob encomenda
                 </span>
-              ))}
+              )}
             </div>
           </div>
         </div>

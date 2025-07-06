@@ -29,7 +29,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6">
+      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 [&>button]:hidden">
         {/* Botão de Fechar com Seta */}
         <button
           onClick={onClose}
@@ -39,13 +39,13 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
           <ArrowLeft className="w-6 h-6" />
         </button>
         
-        <DialogHeader>
+        <DialogHeader className="pt-8">
           <DialogTitle className="text-lg sm:text-xl font-bold text-center text-foreground">
             {product.name}
           </DialogTitle>
         </DialogHeader>
         
-        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 pt-4">
           {/* Galeria de Imagens */}
           <div className="space-y-4">
             {/* Imagem Principal */}
@@ -106,16 +106,26 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
             {/* Tamanhos Disponíveis */}
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-foreground">Tamanhos Disponíveis:</h3>
-              <div className="flex flex-wrap gap-2">
-                {product.availableSizes.map((size) => (
-                  <span
-                    key={size}
-                    className="px-3 py-2 text-sm font-medium rounded-lg bg-primary text-primary-foreground
-                              shadow-sm border border-primary/20"
-                  >
-                    {size}
+              <div className="flex flex-col gap-3">
+                {/* Números */}
+                <div className="flex flex-wrap gap-2">
+                  {product.availableSizes.filter(size => size !== "Sob encomenda").map((size) => (
+                    <span
+                      key={size}
+                      className="px-3 py-2 text-sm font-medium rounded-lg bg-primary text-primary-foreground
+                                shadow-sm border border-primary/20"
+                    >
+                      {size}
+                    </span>
+                  ))}
+                </div>
+                {/* Sob encomenda */}
+                {product.availableSizes.includes("Sob encomenda") && (
+                  <span className="px-3 py-2 text-sm font-medium rounded-lg bg-accent text-accent-foreground
+                                  shadow-sm border border-accent/20 self-start">
+                    Sob encomenda
                   </span>
-                ))}
+                )}
               </div>
             </div>
 

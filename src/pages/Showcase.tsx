@@ -167,26 +167,47 @@ const Showcase = () => {
                     </div>
                   ))}
 
-                  {/* Paginação */}
-                  {totalPages > 1 && (
-                    <div className="flex justify-center mt-8 gap-2 animate-fade-in">
-                      {Array.from({ length: totalPages }, (_, i) => (
-                        <button
-                          key={i}
-                          onClick={() => handlePageChange(i + 1)}
-                          className={`w-8 h-8 rounded-full font-bold border-2 transition-all duration-200 flex items-center justify-center
-                            ${currentPage === i + 1 ? "bg-primary text-primary-foreground border-primary scale-110 shadow-lg" : "bg-background text-foreground border-border hover:bg-accent hover:text-accent-foreground"}
-                          `}
-                          style={{ animationDelay: `${i * 0.05}s` }}
-                        >
-                          {i + 1}
-                        </button>
-                      ))}
-                    </div>
-                  )}
                 </div>
               )}
             </div>
+          </div>
+        </section>
+
+        {/* Paginação */}
+        <section className="flex justify-center animate-fade-in">
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+              disabled={currentPage === 1}
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+            >
+              Anterior
+            </button>
+            
+            <div className="flex items-center space-x-1">
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => handlePageChange(i + 1)}
+                  className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 w-10 ${
+                    currentPage === i + 1
+                      ? "border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+                      : "hover:bg-accent hover:text-accent-foreground"
+                  }`}
+                  aria-current={currentPage === i + 1 ? "page" : undefined}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+              disabled={currentPage === totalPages}
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+            >
+              Próximo
+            </button>
           </div>
         </section>
       </main>

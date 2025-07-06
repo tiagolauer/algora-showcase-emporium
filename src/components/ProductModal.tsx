@@ -18,6 +18,21 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [animationDirection, setAnimationDirection] = useState<"left" | "right" | null>(null);
+  const [zoomStyle, setZoomStyle] = useState<React.CSSProperties>({});
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setZoomStyle({
+      transform: "scale(2)",
+      transformOrigin: `${x}% ${y}%`
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setZoomStyle({});
+  };
 
   if (!product) return null;
 
@@ -84,7 +99,10 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
               <img
                 src={product.images[currentImageIndex]}
                 alt={`${product.name} - Image ${currentImageIndex + 1}`}
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover transition-transform duration-300 ${animating ? (animationDirection === "left" ? "animate-slide-out-left" : "animate-slide-out-right") : ""}`}
+                style={zoomStyle}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
               />
               
               {/* Controles de Navegação */}

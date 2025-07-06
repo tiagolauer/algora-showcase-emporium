@@ -10,8 +10,8 @@ import { useEffect } from "react";
 import algoraLogo from "@/assets/algora-logo.png";
 import pijama1a from "@/assets/conjunto-rosa-borboleta-1.png";
 import pijama1b from "@/assets/conjunto-rosa-borboleta-2.png";
-import pijama2a from "@/assets/pijama-set-2a.jpg";
-import pijama2b from "@/assets/pijama-set-2b.jpg";
+import pijama2a from "@/assets/conjunto-dinossauro-bege-1.png";
+import pijama2b from "@/assets/conjunto-dinossauro-bege-1.png";
 import pijama3a from "@/assets/pijama-set-3a.jpg";
 import pijama3b from "@/assets/pijama-set-3b.jpg";
 import pijama4a from "@/assets/pijama-set-4a.jpg";
@@ -32,7 +32,7 @@ const Showcase = () => {
     },
     {
       id: 2,
-      name: "Conjunto Classic Blue",
+      name: "Conjunto Dinossauro Bege",
       images: [pijama2a, pijama2b],
       availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16"]
     },
@@ -69,6 +69,20 @@ const Showcase = () => {
         product.availableSizes.some(size => filteredSizes.includes(size))
       );
 
+  // Paginação
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+  const currentProducts = filteredProducts.slice(
+    (currentPage - 1) * productsPerPage,
+    currentPage * productsPerPage
+  );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const handleViewDetails = (product: any) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
@@ -97,16 +111,17 @@ const Showcase = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header com Logo */}
-      <header className="bg-card shadow-sm border-b border-border">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center justify-center gap-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-              Mostruário da
-            </h1>
-            <img src={algoraLogo} alt="Logo Algora" className="h-24 md:h-32" />
-          </div>
-        </div>
-      </header>
+      <header className="bg-card shadow-sm border-b border-border select-none">
+  <div className="container mx-auto px-4 py-8">
+    <div className="flex items-center justify-center gap-4">
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+        Mostruário da
+      </h1>
+      <img src={algoraLogo} alt="Logo Algora" className="h-24 md:h-32" />
+    </div>
+  </div>
+</header>
+
 
       <main className="container mx-auto px-4 py-8 space-y-12">
         {/* Seção de Tabelas de Medidas */}
@@ -139,7 +154,7 @@ const Showcase = () => {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 auto-rows-fr">
-                  {filteredProducts.map((product, index) => (
+                  {currentProducts.map((product, index) => (
                     <div 
                       key={product.id} 
                       className="animate-fade-in h-full"
@@ -151,6 +166,24 @@ const Showcase = () => {
                       />
                     </div>
                   ))}
+
+                  {/* Paginação */}
+                  {totalPages > 1 && (
+                    <div className="flex justify-center mt-8 gap-2 animate-fade-in">
+                      {Array.from({ length: totalPages }, (_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => handlePageChange(i + 1)}
+                          className={`w-8 h-8 rounded-full font-bold border-2 transition-all duration-200 flex items-center justify-center
+                            ${currentPage === i + 1 ? "bg-primary text-primary-foreground border-primary scale-110 shadow-lg" : "bg-background text-foreground border-border hover:bg-accent hover:text-accent-foreground"}
+                          `}
+                          style={{ animationDelay: `${i * 0.05}s` }}
+                        >
+                          {i + 1}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </div>

@@ -24,7 +24,7 @@ const Footer = () => {
           {/* Botões de contato */}
           <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
             <a
-              href="https://instagram.com/algora"
+              href="https://instagram.com/ag.algora"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 algora-btn-primary py-3 px-6 rounded-lg font-semibold text-sm sm:text-base transition-all hover:scale-105"

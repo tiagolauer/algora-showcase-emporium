@@ -32,7 +32,7 @@ const SizeTables = () => {
       {/* Tabela de Casacos */}
       <Card className="algora-card">
         <CardHeader className="algora-gradient text-primary-foreground">
-          <CardTitle className="text-lg sm:text-xl font-bold text-center">Tabela de Medidas - Casacos</CardTitle>
+          <CardTitle className="text-lg sm:text-xl font-bold text-center">Casacos</CardTitle>
         </CardHeader>
         <CardContent className="p-0">
           <div className="overflow-x-auto">
@@ -67,7 +67,7 @@ const SizeTables = () => {
        {/* Tabela de Calças */}
        <Card className="algora-card">
          <CardHeader className="algora-gradient text-primary-foreground">
-           <CardTitle className="text-lg sm:text-xl font-bold text-center">Tabela de Medidas - Calças</CardTitle>
+           <CardTitle className="text-lg sm:text-xl font-bold text-center">Calças</CardTitle>
          </CardHeader>
          <CardContent className="p-0">
            <div className="overflow-x-auto">

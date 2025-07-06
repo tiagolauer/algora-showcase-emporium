@@ -34,7 +34,7 @@ const Footer = () => {
             </a>
             
             <a
-              href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os conjuntos de pijama da Algora."
+              href="https://wa.me/5547988549133?text=Olá! Gostaria de saber mais sobre os conjuntos de pijama da Algora."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 algora-btn-secondary py-3 px-6 rounded-lg font-semibold text-sm sm:text-base transition-all hover:scale-105"
@@ -46,7 +46,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="text-center text-xs sm:text-sm text-muted-foreground pt-4 border-t border-border w-full">
-            <p>&copy; 2024 Algora. Todos os direitos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} Algora. Todos os direitos reservados.</p>
           </div>
         </div>
       </div>

@@ -29,12 +29,11 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 [&>button]:hidden">
+      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         {/* Botão de Fechar com Seta */}
         <button
           onClick={onClose}
-          className="absolute top-4 left-4 z-10 bg-background/90 hover:bg-background 
-                     text-foreground p-3 rounded-full shadow-md transition-colors"
+          className="algora-modal-close-btn"
         >
           <ArrowLeft className="w-6 h-6" />
         </button>

@@ -118,10 +118,12 @@ const Showcase = () => {
       <header className="bg-card shadow-sm border-b border-border select-none">
   <div className="container mx-auto px-4 py-8">
     <div className="flex items-center justify-center gap-4">
-      <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-        Mostruário da
-      </h1>
       <img src={algoraLogo} alt="Logo Algora" className="h-24 md:h-32" />
+    </div>
+    <div className="flex items-center justify-center gap-4">
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+        Mostruário
+      </h1>
     </div>
   </div>
 </header>

@@ -85,7 +85,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
           <img
             src={images[currentImageIndex]}
             alt={`${name} - Image ${currentImageIndex + 1}`}
-            className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${animating ? (animationDirection === "left" ? "animate-slide-out-left" : "animate-slide-out-right") : ""}`}
+            className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${animating ? (animationDirection === "left" ? "animate-slide-out-left" : animationDirection === "right" ? "animate-slide-out-right" : "") : ""}`}
           />
           
           {/* Controles do Carrossel */}

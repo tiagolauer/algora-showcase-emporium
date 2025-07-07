@@ -19,18 +19,23 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
   const [animating, setAnimating] = useState(false);
   const [animationDirection, setAnimationDirection] = useState<"left" | "right" | null>(null);
   const [zoomStyle, setZoomStyle] = useState<React.CSSProperties>({});
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+    if (isMobile) return;
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - left) / width) * 100;
     const y = ((e.clientY - top) / height) * 100;
     setZoomStyle({
       transform: "scale(2)",
-      transformOrigin: `${x}% ${y}%`
+      transformOrigin: `${x}% ${y}%`,
+      transition: "transform 0.2s cubic-bezier(0.4,0,0.2,1)",
+      cursor: "zoom-in",
     });
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     setZoomStyle({});
   };
 
@@ -100,9 +105,9 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
                 src={product.images[currentImageIndex]}
                 alt={`${product.name} - Image ${currentImageIndex + 1}`}
                 className={`w-full h-full object-cover transition-transform duration-300 ${animating ? (animationDirection === "left" ? "animate-slide-out-left" : "animate-slide-out-right") : ""}`}
-                style={zoomStyle}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
+                style={!isMobile ? zoomStyle : {}}
+                onMouseMove={!isMobile ? handleMouseMove : undefined}
+                onMouseLeave={!isMobile ? handleMouseLeave : undefined}
               />
               
               {/* Controles de Navegação */}

@@ -12,10 +12,14 @@ import pijama1a from "@/assets/conjunto-rosa-borboleta-1.png";
 import pijama1b from "@/assets/conjunto-rosa-borboleta-2.png";
 import pijama2a from "@/assets/conjunto-dinossauro-bege-1.png";
 import pijama2b from "@/assets/conjunto-dinossauro-bege-1.png";
-import pijama3a from "@/assets/pijama-set-3a.jpg";
-import pijama3b from "@/assets/pijama-set-3b.jpg";
-import pijama4a from "@/assets/pijama-set-4a.jpg";
-import pijama4b from "@/assets/pijama-set-4b.jpg";
+import pijama3a from "@/assets/conjunto-coelho-rosa-1.png";
+import pijama3b from "@/assets/conjunto-coelho-rosa-2.png";
+import pijama4a from "@/assets/conjunto-urso-com-coracao-1.png";
+import pijama4b from "@/assets/conjunto-urso-com-coracao-2.png";
+import pijama5a from "@/assets/conjunto-dinossauro-espacial-1.png";
+import pijama5b from "@/assets/conjunto-dinossauro-espacial-2.png";
+import pijama6a from "@/assets/conjunto-coracao-roxo-1.png";
+import pijama6b from "@/assets/conjunto-coracao-roxo-2.png";
 
 const Showcase = () => {
   const [filteredSizes, setFilteredSizes] = useState<string[]>([]);
@@ -38,27 +42,27 @@ const Showcase = () => {
     },
     {
       id: 3,
-      name: "Conjunto Luxury Pink",
+      name: "Conjunto Coelho Rosa",
       images: [pijama3a, pijama3b],
-      availableSizes: ["2", "3", "4", "6", "8", "10", "14", "16", "Sob encomenda"]
+      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16"]
     },
     {
       id: 4,
-      name: "Conjunto Pure White",
+      name: "Conjunto Urso com Coração",
       images: [pijama4a, pijama4b],
-      availableSizes: ["1", "2", "4", "6", "8", "10", "12", "14", "16"]
+      availableSizes: ["3"]
     },
     {
       id: 5,
-      name: "Conjunto Dream Cotton",
-      images: [pijama1a, pijama3b], // Reutilizando imagens para demonstração
-      availableSizes: ["3", "4", "6", "8", "10", "12", "Sob encomenda"]
+      name: "Conjunto Dinossauro Espacial",
+      images: [pijama5a, pijama5b],
+      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16"]
     },
     {
       id: 6,
-      name: "Conjunto Comfort Plus",
-      images: [pijama2b, pijama4a],
-      availableSizes: ["1", "2", "3", "6", "8", "10", "12", "14"]
+      name: "Conjunto Coração Roxo",
+      images: [pijama6a, pijama6b],
+      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16"]
     }
   ];
 

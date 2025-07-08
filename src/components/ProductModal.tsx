@@ -49,7 +49,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
       setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 400);
+    }, 200);
   };
 
   const prevImage = () => {
@@ -60,7 +60,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
       setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 400);
+    }, 200);
   };
 
   return (
@@ -95,9 +95,11 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
                 const start = (window as any).modalTouchStartX || 0;
                 const end = (window as any).modalTouchEndX || 0;
                 if (start - end > 50) {
-                  nextImage();
+                  // Mudança imediata para touch
+                  setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
                 } else if (end - start > 50) {
-                  prevImage();
+                  // Mudança imediata para touch
+                  setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
                 }
               }}
             >

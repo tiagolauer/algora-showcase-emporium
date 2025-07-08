@@ -189,13 +189,13 @@
 }
 
 .animate-slide-fade-left {
-  animation: slide-fade-left 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slide-fade-left 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .animate-slide-fade-right {
-  animation: slide-fade-right 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slide-fade-right 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .animate-slide-fade-in {
-  animation: slide-fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slide-fade-in 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }

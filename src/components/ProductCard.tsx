@@ -25,7 +25,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 400); // duração da animação
+    }, 200); // duração da animação reduzida
   };
 
   const prevImage = (e: React.MouseEvent) => {
@@ -37,7 +37,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
       setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 400); // duração da animação
+    }, 200); // duração da animação reduzida
   };
 
   const handleCardClick = () => {
@@ -64,9 +64,11 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX - touchEndX > 50) {
-      nextImage(e as any);
+      // Mudança imediata para touch
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
     } else if (touchEndX - touchStartX > 50) {
-      prevImage(e as any);
+      // Mudança imediata para touch
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
     }
   };
 

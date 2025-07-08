@@ -25,7 +25,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 300); // duração da animação
+    }, 400); // duração da animação
   };
 
   const prevImage = (e: React.MouseEvent) => {
@@ -37,7 +37,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
       setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 300); // duração da animação
+    }, 400); // duração da animação
   };
 
   const handleCardClick = () => {
@@ -85,7 +85,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
           <img
             src={images[currentImageIndex]}
             alt={`${name} - Image ${currentImageIndex + 1}`}
-            className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${animating ? (animationDirection === "left" ? "animate-slide-out-left" : animationDirection === "right" ? "animate-slide-out-right" : "") : ""}`}
+            className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${animating ? (animationDirection === "left" ? "animate-slide-fade-left" : animationDirection === "right" ? "animate-slide-fade-right" : "") : "animate-slide-fade-in"}`}
           />
           
           {/* Controles do Carrossel */}

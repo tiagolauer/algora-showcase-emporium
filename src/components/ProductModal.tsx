@@ -49,7 +49,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
       setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 300);
+    }, 400);
   };
 
   const prevImage = () => {
@@ -60,7 +60,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
       setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 300);
+    }, 400);
   };
 
   return (
@@ -104,7 +104,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
               <img
                 src={product.images[currentImageIndex]}
                 alt={`${product.name} - Image ${currentImageIndex + 1}`}
-                className={`w-full h-full object-cover transition-transform duration-300 ${animating ? (animationDirection === "left" ? "animate-slide-out-left" : "animate-slide-out-right") : ""}`}
+                className={`w-full h-full object-cover transition-transform duration-300 ${animating ? (animationDirection === "left" ? "animate-slide-fade-left" : "animate-slide-fade-right") : "animate-slide-fade-in"}`}
                 style={!isMobile ? zoomStyle : {}}
                 onMouseMove={!isMobile ? handleMouseMove : undefined}
                 onMouseLeave={!isMobile ? handleMouseLeave : undefined}

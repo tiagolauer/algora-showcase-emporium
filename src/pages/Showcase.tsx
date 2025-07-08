@@ -4,7 +4,9 @@ import SizeTables from "@/components/SizeTables";
 import ProductCard from "@/components/ProductCard";
 import ProductModal from "@/components/ProductModal";
 import Footer from "@/components/Footer";
+import Navigation from "@/components/Navigation";
 import { useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 // Importação das imagens
 import algoraLogo from "@/assets/algora-logo.png";
@@ -25,6 +27,7 @@ const Showcase = () => {
   const [filteredSizes, setFilteredSizes] = useState<string[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Dados dos produtos
   const products = [
@@ -114,24 +117,74 @@ const Showcase = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header com Logo */}
-      <header className="bg-card shadow-sm border-b border-border select-none">
-  <div className="container mx-auto px-4 py-8">
-    <div className="flex items-center justify-center gap-4">
-      <img src={algoraLogo} alt="Logo Algora" className="h-24 md:h-32" />
-    </div>
-    <div className="flex items-center justify-center gap-4">
-      <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-        Mostruário
-      </h1>
-    </div>
-  </div>
-</header>
+      {/* Header com Logo e Navegação */}
+      <header className="bg-card shadow-sm border-b border-border select-none sticky top-0 z-50 backdrop-blur-sm bg-card/95">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo e Título */}
+            <div className="flex items-center gap-4">
+              <img src={algoraLogo} alt="Logo Algora" className="h-16 md:h-20" />
+              <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+                Mostruário
+              </h1>
+            </div>
+
+            {/* Navegação Desktop */}
+            <Navigation />
+
+            {/* Menu Mobile */}
+            <button
+              className="md:hidden p-2 rounded-md hover:bg-accent"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+
+          {/* Menu Mobile Expandido */}
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-4 pt-4 border-t border-border">
+              <nav className="flex flex-col space-y-2">
+                <button
+                  className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                  onClick={() => {
+                    const element = document.getElementById("produtos");
+                    if (element) element.scrollIntoView({ behavior: "smooth" });
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  Produtos
+                </button>
+                <button
+                  className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                  onClick={() => {
+                    const element = document.getElementById("tabelas");
+                    if (element) element.scrollIntoView({ behavior: "smooth" });
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  Tabelas de Medidas
+                </button>
+                <button
+                  className="text-left px-4 py-2 rounded-md hover:bg-accent transition-colors"
+                  onClick={() => {
+                    const element = document.getElementById("contato");
+                    if (element) element.scrollIntoView({ behavior: "smooth" });
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  Contato
+                </button>
+              </nav>
+            </div>
+          )}
+        </div>
+      </header>
 
 
       <main className="container mx-auto px-4 py-8 space-y-12">
         {/* Seção de Tabelas de Medidas */}
-        <section>
+        <section id="tabelas">
           <h2 className="text-2xl font-bold text-foreground mb-8 text-center animate-slide-up">
             Tabelas de Medidas
           </h2>
@@ -139,7 +192,7 @@ const Showcase = () => {
         </section>
 
         {/* Seção de Produtos */}
-        <section>
+        <section id="produtos">
           <h2 className="text-2xl font-bold text-foreground mb-8 text-center animate-slide-up">
             Nossos Conjuntos de Pijamas
           </h2>

@@ -3,7 +3,7 @@ import algoraLogo from "@/assets/algora-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border mt-16">
+    <footer id="contato" className="bg-card border-t border-border mt-16">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center space-y-6">
           {/* Logo e Nome */}

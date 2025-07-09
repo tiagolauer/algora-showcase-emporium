@@ -39,23 +39,12 @@ const Navigation = () => {
         </NavigationMenuItem>
         
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Sobre</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <div className="grid gap-3 p-6 w-[400px]">
-              <div className="grid gap-1">
-                <h4 className="text-sm font-medium leading-none">Algora</h4>
-                <p className="text-sm text-muted-foreground">
-                  Conjuntos de pijamas elegantes e confortáveis para toda a família.
-                </p>
-              </div>
-              <div className="grid gap-1">
-                <h4 className="text-sm font-medium leading-none">Qualidade</h4>
-                <p className="text-sm text-muted-foreground">
-                  Produtos confeccionados com materiais de alta qualidade e acabamento premium.
-                </p>
-              </div>
-            </div>
-          </NavigationMenuContent>
+          <NavigationMenuLink
+            className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
+            onClick={() => scrollToSection("sobre")}
+          >
+            Sobre
+          </NavigationMenuLink>
         </NavigationMenuItem>
         
         <NavigationMenuItem>

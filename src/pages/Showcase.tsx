@@ -22,6 +22,8 @@ import pijama5a from "@/assets/conjunto-dinossauro-espacial-1.png";
 import pijama5b from "@/assets/conjunto-dinossauro-espacial-2.png";
 import pijama6a from "@/assets/conjunto-coracao-roxo-1.png";
 import pijama6b from "@/assets/conjunto-coracao-roxo-2.png";
+import "@fontsource/montserrat/700.css";
+import "@fontsource/montserrat/400.css";
 
 const Showcase = () => {
   const [filteredSizes, setFilteredSizes] = useState<string[]>([]);
@@ -183,6 +185,16 @@ const Showcase = () => {
 
 
       <main className="container mx-auto px-4 py-8 space-y-12">
+        {/* Seção Sobre */}
+        <section id="sobre" className="rounded-xl bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 shadow-lg p-8 mb-12 flex flex-col items-center text-center animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-[Montserrat] tracking-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Sobre a Algora
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-4 font-[Montserrat]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Conjuntos de <i>fleece</i> fofinhos e confortáveis para toda a família. Nossa missão é proporcionar aconchego, estilo e alegria em cada peça, com muito carinho e atenção aos detalhes.
+          </p>
+          <img src={algoraLogo} alt="Logo Algora" className="h-20 md:h-28 mb-2" />
+        </section>
         {/* Seção de Tabelas de Medidas */}
         <section id="tabelas">
           <h2 className="text-2xl font-bold text-foreground mb-8 text-center animate-slide-up">

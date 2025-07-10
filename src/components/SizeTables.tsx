@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import guiaMedidasPijama from "@/assets/guia-medidas-pijama.png"
 
 const SizeTables = () => {
   // Dados da tabela de casacos (baseado na imagem fornecida)
@@ -122,7 +123,37 @@ const SizeTables = () => {
   ]
 
   return (
-    <div className="grid md:grid-cols-2 gap-8 animate-fade-in">
+    <div className="space-y-8 animate-fade-in">
+      {/* Guia de Medidas */}
+      <Card className="algora-card">
+        <CardHeader className="algora-gradient text-primary-foreground">
+          <CardTitle className="text-lg sm:text-xl font-bold text-center">
+            Como Medir Seu Pijama
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-6">
+          <div className="flex flex-col items-center space-y-4">
+            <img 
+              src={guiaMedidasPijama} 
+              alt="Guia de medidas do pijama"
+              className="max-w-full h-auto rounded-lg shadow-lg"
+            />
+            <div className="text-sm text-muted-foreground text-center max-w-2xl">
+              <p className="mb-2">
+                <strong>ALTURA:</strong> Meça da parte superior do ombro até a barra da peça
+              </p>
+              <p className="mb-2">
+                <strong>LARGURA:</strong> Meça de uma axila à outra, passando pelo peito
+              </p>
+              <p>
+                <strong>MANGA:</strong> Meça do ombro até o punho
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <div className="grid md:grid-cols-2 gap-8">
       {/* Tabela de Casacos */}
       <Card className="algora-card">
         <CardHeader className="algora-gradient text-primary-foreground">
@@ -240,6 +271,7 @@ const SizeTables = () => {
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   )
 }

@@ -22,6 +22,18 @@ import pijama5a from "@/assets/conjunto-dinossauro-espacial-1.png"
 import pijama5b from "@/assets/conjunto-dinossauro-espacial-2.png"
 import pijama6a from "@/assets/conjunto-coracao-roxo-1.png"
 import pijama6b from "@/assets/conjunto-coracao-roxo-2.png"
+import pijama7a from "@/assets/conjunto-urso-rosa-1.png"
+import pijama7b from "@/assets/conjunto-urso-rosa-2.png"
+import pijama8a from "@/assets/conjunto-nuvenzinha-1.png"
+import pijama8b from "@/assets/conjunto-nuvenzinha-2.png"
+import pijama9a from "@/assets/conjunto-urso-de-ferias-1.png"
+import pijama9b from "@/assets/conjunto-urso-de-ferias-2.png"
+import pijama10a from "@/assets/conjunto-carrinho-1.png"
+import pijama10b from "@/assets/conjunto-carrinho-2.png"
+import pijama11a from "@/assets/conjunto-dinossauro-esportivo-1.png"
+import pijama11b from "@/assets/conjunto-dinossauro-esportivo-2.png"
+import pijama12a from "@/assets/conjunto-aviaozinho-1.png"
+import pijama12b from "@/assets/conjunto-aviaozinho-2.png"
 import "@fontsource/montserrat/700.css"
 import "@fontsource/montserrat/400.css"
 
@@ -32,44 +44,104 @@ const Showcase = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Dados dos produtos
+  const SIZES = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "6",
+    "8",
+    "10",
+    "12",
+    "14",
+    "16",
+    "PP",
+    "P",
+    "M",
+    "G",
+    "GG",
+    "Sob encomenda"
+  ];
+  function getRandomSizes() {
+    const count = Math.floor(Math.random() * (SIZES.length - 2)) + 1;
+    const shuffled = SIZES.slice().sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, count);
+    return SIZES.filter(size => selected.includes(size));
+  }
   const products = [
     {
       id: 1,
       name: "Conjunto Rosa Borboleta",
       images: [pijama1a, pijama1b],
-      availableSizes: ["2", "4", "6", "8", "10", "12", "14", "Sob encomenda"]
+      availableSizes: getRandomSizes()
     },
     {
       id: 2,
       name: "Conjunto Dinossauro Bege",
       images: [pijama2a, pijama2b],
-      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16"]
+      availableSizes: getRandomSizes()
     },
     {
       id: 3,
       name: "Conjunto Coelho Rosa",
       images: [pijama3a, pijama3b],
-      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16"]
+      availableSizes: getRandomSizes()
     },
     {
       id: 4,
       name: "Conjunto Urso com Coração",
       images: [pijama4a, pijama4b],
-      availableSizes: ["3"]
+      availableSizes: getRandomSizes()
     },
     {
       id: 5,
       name: "Conjunto Dinossauro Espacial",
       images: [pijama5a, pijama5b],
-      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16"]
+      availableSizes: getRandomSizes()
     },
     {
       id: 6,
       name: "Conjunto Coração Roxo",
       images: [pijama6a, pijama6b],
-      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16"]
+      availableSizes: getRandomSizes()
+    },
+    {
+      id: 7,
+      name: "Conjunto Urso Rosa",
+      images: [pijama7a, pijama7b],
+      availableSizes: getRandomSizes()
+    },
+    {
+      id: 8,
+      name: "Conjunto Nuvenzinha",
+      images: [pijama8a, pijama8b],
+      availableSizes: getRandomSizes()
+    },
+    {
+      id: 9,
+      name: "Conjunto Urso de Férias",
+      images: [pijama9a, pijama9b],
+      availableSizes: getRandomSizes()
+    },
+    {
+      id: 10,
+      name: "Conjunto Carrinho",
+      images: [pijama10a, pijama10b],
+      availableSizes: getRandomSizes()
+    },
+    {
+      id: 11,
+      name: "Conjunto Dinossauro Esportivo",
+      images: [pijama11a, pijama11b],
+      availableSizes: getRandomSizes()
+    },
+    {
+      id: 12,
+      name: "Conjunto Aviãozinho",
+      images: [pijama12a, pijama12b],
+      availableSizes: getRandomSizes()
     }
-  ]
+  ];
 
   // Filtrar produtos por tamanho
   const filteredProducts =
@@ -90,7 +162,7 @@ const Showcase = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
-    window.scrollTo({ top: 0, behavior: "smooth" })
+    // Removido o scroll para o topo
   }
 
   const handleViewDetails = (product: any) => {

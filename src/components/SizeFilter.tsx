@@ -1,28 +1,45 @@
-import { useState } from "react";
-import { Filter } from "lucide-react";
+import { useState } from "react"
+import { Filter } from "lucide-react"
 
 interface SizeFilterProps {
-  onFilterChange: (sizes: string[]) => void;
+  onFilterChange: (sizes: string[]) => void
 }
 
-const SIZES = ["1", "2", "3", "4", "6", "8", "10", "12", "14", "16", "Sob encomenda"];
+const SIZES = [
+  "1",
+  "2",
+  "3",
+  "4",
+  "6",
+  "8",
+  "10",
+  "12",
+  "14",
+  "16",
+  "PP",
+  "P",
+  "M",
+  "G",
+  "GG",
+  "Sob encomenda"
+]
 
 const SizeFilter = ({ onFilterChange }: SizeFilterProps) => {
-  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([])
 
   const toggleSize = (size: string) => {
     const newSizes = selectedSizes.includes(size)
       ? selectedSizes.filter(s => s !== size)
-      : [...selectedSizes, size];
-    
-    setSelectedSizes(newSizes);
-    onFilterChange(newSizes);
-  };
+      : [...selectedSizes, size]
+
+    setSelectedSizes(newSizes)
+    onFilterChange(newSizes)
+  }
 
   const clearFilters = () => {
-    setSelectedSizes([]);
-    onFilterChange([]);
-  };
+    setSelectedSizes([])
+    onFilterChange([])
+  }
 
   return (
     <div className="bg-card rounded-lg p-6 shadow-md sticky top-4">
@@ -32,24 +49,24 @@ const SizeFilter = ({ onFilterChange }: SizeFilterProps) => {
           Filtrar por Tamanho
         </h3>
       </div>
-      
+
       <div className="space-y-2">
         <div className="flex flex-wrap gap-2">
-          {SIZES.map((size) => (
+          {SIZES.map(size => (
             <button
               key={size}
               onClick={() => toggleSize(size)}
               className={`algora-filter-item text-sm border ${
-                selectedSizes.includes(size) 
-                  ? 'algora-filter-active border-accent' 
-                  : 'border-border hover:border-primary'
+                selectedSizes.includes(size)
+                  ? "algora-filter-active border-accent"
+                  : "border-border hover:border-primary"
               }`}
             >
               {size}
             </button>
           ))}
         </div>
-        
+
         {selectedSizes.length > 0 && (
           <div className="pt-3 border-t border-border">
             <button
@@ -62,7 +79,7 @@ const SizeFilter = ({ onFilterChange }: SizeFilterProps) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SizeFilter;
+export default SizeFilter

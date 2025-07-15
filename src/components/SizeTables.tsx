@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { ChevronDown, ChevronUp } from "lucide-react"
 
 const SizeTables = () => {
   const [jacketExpanded, setJacketExpanded] = useState(false)
   const [pantsExpanded, setPantsExpanded] = useState(false)
+
   // Dados da tabela de casacos (baseado na imagem fornecida)
   const jacketSizes = [
     { tamanho: "1", altura: "40", largura: "33", manga: "32" },
@@ -133,6 +133,35 @@ const SizeTables = () => {
   const initialPantsSizes = pantsSizes.slice(0, 7) // até o tamanho 12
   const remainingPantsSizes = pantsSizes.slice(7)
 
+  const renderSizeRow = (size: any, index: number, color: string) => (
+    <tr
+      key={size.tamanho}
+      className={
+        index % 2 === 0 ? "bg-background" : "bg-muted/20"
+      }
+    >
+      <td className="p-2 sm:p-3 font-bold text-center">
+        <span className={`inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full ${color} text-sm sm:text-base font-bold`}>
+          {size.tamanho}
+        </span>
+      </td>
+      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+        {size.altura || size.cintura}
+      </td>
+      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+        {size.largura || size.quadril}
+      </td>
+      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+        {size.manga || size.entreperna}
+      </td>
+      {size.comprimento && (
+        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+          {size.comprimento}
+        </td>
+      )}
+    </tr>
+  )
+
   return (
     <div className="grid md:grid-cols-2 gap-8 animate-fade-in">
       {/* Tabela de Casacos */}
@@ -162,85 +191,34 @@ const SizeTables = () => {
                 </tr>
               </thead>
               <tbody>
-                {initialJacketSizes.map((size, index) => (
-                  <tr
-                    key={size.tamanho}
-                    className={
-                      index % 2 === 0 ? "bg-background" : "bg-muted/20"
-                    }
-                  >
-                    <td className="p-2 sm:p-3 font-bold text-center">
-                      <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary text-primary-foreground text-sm sm:text-base font-bold">
-                        {size.tamanho}
-                      </span>
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.altura}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.largura}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.manga}
-                    </td>
-                  </tr>
-                ))}
+                {initialJacketSizes.map((size, index) => 
+                  renderSizeRow(size, index, "bg-primary text-primary-foreground")
+                )}
+                {jacketExpanded && remainingJacketSizes.map((size, index) => 
+                  renderSizeRow(size, index + initialJacketSizes.length, "bg-primary text-primary-foreground")
+                )}
               </tbody>
             </table>
           </div>
-          <Collapsible open={jacketExpanded} onOpenChange={setJacketExpanded}>
-            <div className="p-4 border-t">
-              <CollapsibleTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  className="w-full"
-                >
-                  {jacketExpanded ? (
-                    <>
-                      <ChevronUp className="w-4 h-4 mr-2" />
-                      Ver Menos
-                    </>
-                  ) : (
-                    <>
-                      <ChevronDown className="w-4 h-4 mr-2" />
-                      Ver Tudo
-                    </>
-                  )}
-                </Button>
-              </CollapsibleTrigger>
-            </div>
-            <CollapsibleContent className="animate-accordion-down">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <tbody>
-                    {remainingJacketSizes.map((size, index) => (
-                      <tr
-                        key={size.tamanho}
-                        className={
-                          (index + initialJacketSizes.length) % 2 === 0 ? "bg-background" : "bg-muted/20"
-                        }
-                      >
-                        <td className="p-2 sm:p-3 font-bold text-center">
-                          <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary text-primary-foreground text-sm sm:text-base font-bold">
-                            {size.tamanho}
-                          </span>
-                        </td>
-                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                          {size.altura}
-                        </td>
-                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                          {size.largura}
-                        </td>
-                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                          {size.manga}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
+          <div className="p-4 border-t">
+            <Button 
+              variant="outline" 
+              className="w-full"
+              onClick={() => setJacketExpanded(!jacketExpanded)}
+            >
+              {jacketExpanded ? (
+                <>
+                  <ChevronUp className="w-4 h-4 mr-2" />
+                  Ver Menos
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4 mr-2" />
+                  Ver Tudo
+                </>
+              )}
+            </Button>
+          </div>
         </CardContent>
       </Card>
 
@@ -274,91 +252,34 @@ const SizeTables = () => {
                 </tr>
               </thead>
               <tbody>
-                {initialPantsSizes.map((size, index) => (
-                  <tr
-                    key={size.tamanho}
-                    className={
-                      index % 2 === 0 ? "bg-background" : "bg-muted/20"
-                    }
-                  >
-                    <td className="p-2 sm:p-3 font-bold text-center">
-                      <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-secondary text-secondary-foreground text-sm sm:text-base font-bold">
-                        {size.tamanho}
-                      </span>
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.cintura}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.quadril}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.entreperna}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.comprimento}
-                    </td>
-                  </tr>
-                ))}
+                {initialPantsSizes.map((size, index) => 
+                  renderSizeRow(size, index, "bg-secondary text-secondary-foreground")
+                )}
+                {pantsExpanded && remainingPantsSizes.map((size, index) => 
+                  renderSizeRow(size, index + initialPantsSizes.length, "bg-secondary text-secondary-foreground")
+                )}
               </tbody>
             </table>
           </div>
-          <Collapsible open={pantsExpanded} onOpenChange={setPantsExpanded}>
-            <div className="p-4 border-t">
-              <CollapsibleTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  className="w-full"
-                >
-                  {pantsExpanded ? (
-                    <>
-                      <ChevronUp className="w-4 h-4 mr-2" />
-                      Ver Menos
-                    </>
-                  ) : (
-                    <>
-                      <ChevronDown className="w-4 h-4 mr-2" />
-                      Ver Tudo
-                    </>
-                  )}
-                </Button>
-              </CollapsibleTrigger>
-            </div>
-            <CollapsibleContent className="animate-accordion-down">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <tbody>
-                    {remainingPantsSizes.map((size, index) => (
-                      <tr
-                        key={size.tamanho}
-                        className={
-                          (index + initialPantsSizes.length) % 2 === 0 ? "bg-background" : "bg-muted/20"
-                        }
-                      >
-                        <td className="p-2 sm:p-3 font-bold text-center">
-                          <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-secondary text-secondary-foreground text-sm sm:text-base font-bold">
-                            {size.tamanho}
-                          </span>
-                        </td>
-                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                          {size.cintura}
-                        </td>
-                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                          {size.quadril}
-                        </td>
-                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                          {size.entreperna}
-                        </td>
-                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                          {size.comprimento}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
+          <div className="p-4 border-t">
+            <Button 
+              variant="outline" 
+              className="w-full"
+              onClick={() => setPantsExpanded(!pantsExpanded)}
+            >
+              {pantsExpanded ? (
+                <>
+                  <ChevronUp className="w-4 h-4 mr-2" />
+                  Ver Menos
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4 mr-2" />
+                  Ver Tudo
+                </>
+              )}
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </div>

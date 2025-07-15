@@ -163,7 +163,7 @@ const SizeTables = () => {
   )
 
   return (
-    <div className="grid grid-cols-2 gap-4 md:gap-8 animate-fade-in">
+    <div className="grid md:grid-cols-2 gap-8 animate-fade-in">
       {/* Tabela de Casacos */}
       <Card className="algora-card">
         <CardHeader className="algora-gradient text-primary-foreground">

@@ -1,6 +1,14 @@
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ChevronDown, ChevronUp } from "lucide-react"
+import medidasCasaco from "@/assets/medidas-casaco.png"
+import medidasCalca from "@/assets/medidas-calca.png"
 
 const SizeTables = () => {
+  const [jacketExpanded, setJacketExpanded] = useState(false)
+  const [pantsExpanded, setPantsExpanded] = useState(false)
+
   // Dados da tabela de casacos (baseado na imagem fornecida)
   const jacketSizes = [
     { tamanho: "1", altura: "40", largura: "33", manga: "32" },
@@ -121,122 +129,187 @@ const SizeTables = () => {
     }
   ]
 
-  return (
-    <div className="grid md:grid-cols-2 gap-8 animate-fade-in">
-      {/* Tabela de Casacos */}
-      <Card className="algora-card">
-        <CardHeader className="algora-gradient text-primary-foreground">
-          <CardTitle className="text-lg sm:text-xl font-bold text-center">
-            Casacos
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-0">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-muted/50">
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
-                    Tamanho
-                  </th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
-                    Altura (cm)
-                  </th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
-                    Largura (cm)
-                  </th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
-                    Manga (cm)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {jacketSizes.map((size, index) => (
-                  <tr
-                    key={size.tamanho}
-                    className={
-                      index % 2 === 0 ? "bg-background" : "bg-muted/20"
-                    }
-                  >
-                    <td className="p-2 sm:p-3 font-bold text-center">
-                      <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary text-primary-foreground text-sm sm:text-base font-bold">
-                        {size.tamanho}
-                      </span>
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.altura}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.largura}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.manga}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </CardContent>
-      </Card>
+  const initialJacketSizes = jacketSizes.slice(0, 7) // até o tamanho 12
+  const remainingJacketSizes = jacketSizes.slice(7)
 
-      {/* Tabela de Calças */}
-      <Card className="algora-card">
-        <CardHeader className="algora-gradient text-primary-foreground">
-          <CardTitle className="text-lg sm:text-xl font-bold text-center">
-            Calças
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-0">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-muted/50">
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
-                    Tamanho
-                  </th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
-                    Cintura (cm)
-                  </th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
-                    Quadril (cm)
-                  </th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
-                    Entrepierna (cm)
-                  </th>
-                  <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
-                    Comprimento (cm)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {pantsSizes.map((size, index) => (
-                  <tr
-                    key={size.tamanho}
-                    className={
-                      index % 2 === 0 ? "bg-background" : "bg-muted/20"
-                    }
-                  >
-                    <td className="p-2 sm:p-3 font-bold text-center">
-                      <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-secondary text-secondary-foreground text-sm sm:text-base font-bold">
-                        {size.tamanho}
-                      </span>
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.cintura}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.quadril}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.entreperna}
-                    </td>
-                    <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
-                      {size.comprimento}
-                    </td>
+  const initialPantsSizes = pantsSizes.slice(0, 7) // até o tamanho 12
+  const remainingPantsSizes = pantsSizes.slice(7)
+
+  const renderSizeRow = (size: any, index: number, color: string) => (
+    <tr
+      key={size.tamanho}
+      className={
+        index % 2 === 0 ? "bg-background" : "bg-muted/20"
+      }
+    >
+      <td className="p-2 sm:p-3 font-bold text-center">
+        <span className={`inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full ${color} text-sm sm:text-base font-bold`}>
+          {size.tamanho}
+        </span>
+      </td>
+      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+        {size.altura || size.cintura}
+      </td>
+      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+        {size.largura || size.quadril}
+      </td>
+      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+        {size.manga || size.entreperna}
+      </td>
+      {size.comprimento && (
+        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+          {size.comprimento}
+        </td>
+      )}
+    </tr>
+  )
+
+  return (
+    <div className="space-y-8 animate-fade-in">
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Tabela de Casacos */}
+        <Card className="algora-card">
+          <CardHeader className="algora-gradient text-primary-foreground">
+            <CardTitle className="text-lg sm:text-xl font-bold text-center">
+              Casacos
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-muted/50">
+                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
+                      Tamanho
+                    </th>
+                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
+                      Altura (cm)
+                    </th>
+                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
+                      Largura (cm)
+                    </th>
+                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
+                      Manga (cm)
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {initialJacketSizes.map((size, index) => 
+                    renderSizeRow(size, index, "bg-primary text-primary-foreground")
+                  )}
+                  {jacketExpanded && remainingJacketSizes.map((size, index) => 
+                    renderSizeRow(size, index + initialJacketSizes.length, "bg-primary text-primary-foreground")
+                  )}
+                </tbody>
+              </table>
+            </div>
+            <div className="p-4 border-t">
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => setJacketExpanded(!jacketExpanded)}
+              >
+                {jacketExpanded ? (
+                  <>
+                    <ChevronUp className="w-4 h-4 mr-2" />
+                    Ver Menos
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="w-4 h-4 mr-2" />
+                    Ver Tudo
+                  </>
+                )}
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Tabela de Calças */}
+        <Card className="algora-card">
+          <CardHeader className="algora-gradient text-primary-foreground">
+            <CardTitle className="text-lg sm:text-xl font-bold text-center">
+              Calças
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-muted/50">
+                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
+                      Tamanho
+                    </th>
+                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
+                      Cintura (cm)
+                    </th>
+                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
+                      Quadril (cm)
+                    </th>
+                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
+                      Entrepierna (cm)
+                    </th>
+                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">
+                      Comprimento (cm)
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {initialPantsSizes.map((size, index) => 
+                    renderSizeRow(size, index, "bg-secondary text-secondary-foreground")
+                  )}
+                  {pantsExpanded && remainingPantsSizes.map((size, index) => 
+                    renderSizeRow(size, index + initialPantsSizes.length, "bg-secondary text-secondary-foreground")
+                  )}
+                </tbody>
+              </table>
+            </div>
+            <div className="p-4 border-t">
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => setPantsExpanded(!pantsExpanded)}
+              >
+                {pantsExpanded ? (
+                  <>
+                    <ChevronUp className="w-4 h-4 mr-2" />
+                    Ver Menos
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="w-4 h-4 mr-2" />
+                    Ver Tudo
+                  </>
+                )}
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Card de Referência de Medidas */}
+      <Card className="algora-card">
+        <CardContent className="p-6">
+          <h3 className="text-lg sm:text-xl font-bold text-center mb-6">
+            Referência de medidas da tabela
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-items-center">
+            <div className="flex flex-col items-center space-y-2">
+              <img 
+                src={medidasCasaco} 
+                alt="Referência de medidas para casacos" 
+                className="w-full max-w-[300px] h-auto object-contain"
+              />
+              <p className="text-sm font-medium text-center">Casaco</p>
+            </div>
+            <div className="flex flex-col items-center space-y-2">
+              <img 
+                src={medidasCalca} 
+                alt="Referência de medidas para calças" 
+                className="w-full max-w-[300px] h-auto object-contain"
+              />
+              <p className="text-sm font-medium text-center">Calça</p>
+            </div>
           </div>
         </CardContent>
       </Card>

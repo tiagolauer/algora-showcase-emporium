@@ -44,102 +44,78 @@ const Showcase = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Dados dos produtos
-  const SIZES = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "6",
-    "8",
-    "10",
-    "12",
-    "14",
-    "16",
-    "PP",
-    "P",
-    "M",
-    "G",
-    "GG",
-    "Sob encomenda"
-  ];
-  function getRandomSizes() {
-    const count = Math.floor(Math.random() * (SIZES.length - 2)) + 1;
-    const shuffled = SIZES.slice().sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, count);
-    return SIZES.filter(size => selected.includes(size));
-  }
   const products = [
     {
       id: 1,
       name: "Conjunto Rosa Borboleta",
       images: [pijama1a, pijama1b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["2", "4", "6", "8", "10", "12", "14", "M"]
     },
     {
       id: 2,
       name: "Conjunto Dinossauro Bege",
       images: [pijama2a, pijama2b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["3", "4", "6", "8", "12", "16", "G", "GG", "Sob encomenda"]
     },
     {
       id: 3,
       name: "Conjunto Coelho Rosa",
       images: [pijama3a, pijama3b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["1", "2", "3", "4", "6", "8", "10", "12", "P", "M"]
     },
     {
       id: 4,
       name: "Conjunto Urso com Coração",
       images: [pijama4a, pijama4b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["2", "4", "6", "8", "10", "12", "G"]
     },
     {
       id: 5,
       name: "Conjunto Dinossauro Espacial",
       images: [pijama5a, pijama5b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16", "PP", "P"]
     },
     {
       id: 6,
       name: "Conjunto Coração Roxo",
       images: [pijama6a, pijama6b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["4", "6", "8", "10", "12", "14", "16", "GG"]
     },
     {
       id: 7,
       name: "Conjunto Urso Rosa",
       images: [pijama7a, pijama7b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["1", "2", "3", "4", "6", "8", "10", "12", "14", "16"]
     },
     {
       id: 8,
       name: "Conjunto Nuvenzinha",
       images: [pijama8a, pijama8b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["2", "4", "6", "8", "10", "12", "14", "16", "P", "M", "G"]
     },
     {
       id: 9,
       name: "Conjunto Urso de Férias",
       images: [pijama9a, pijama9b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16", "PP", "Sob encomenda"]
     },
     {
       id: 10,
       name: "Conjunto Carrinho",
       images: [pijama10a, pijama10b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["2", "4", "6", "8", "10", "12", "14", "16", "M", "G"]
     },
     {
       id: 11,
       name: "Conjunto Dinossauro Esportivo",
       images: [pijama11a, pijama11b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16", "GG"]
     },
     {
       id: 12,
       name: "Conjunto Aviãozinho",
       images: [pijama12a, pijama12b],
-      availableSizes: getRandomSizes()
+      availableSizes: ["1", "2", "3", "4", "6", "8", "10", "12", "14", "16", "PP", "P", "M", "G", "GG"]
     }
   ];
 

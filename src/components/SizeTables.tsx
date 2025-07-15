@@ -288,7 +288,7 @@ const SizeTables = () => {
       </div>
 
       {/* Card de Referência de Medidas */}
-      <Card className="algora-card">
+      <Card className="algora-card" style={{backgroundColor: '#fff6ec'}}>
         <CardContent className="p-6">
           <h3 className="text-lg sm:text-xl font-bold text-center mb-6">
             Referência de medidas da tabela

@@ -298,7 +298,7 @@ const SizeTables = () => {
               <img 
                 src={medidasCasaco} 
                 alt="Referência de medidas para casacos" 
-                className="w-full max-w-[200px] h-auto object-contain"
+                className="w-full max-w-[300px] h-auto object-contain"
               />
               <p className="text-sm font-medium text-center">Casaco</p>
             </div>
@@ -306,7 +306,7 @@ const SizeTables = () => {
               <img 
                 src={medidasCalca} 
                 alt="Referência de medidas para calças" 
-                className="w-full max-w-[200px] h-auto object-contain"
+                className="w-full max-w-[300px] h-auto object-contain"
               />
               <p className="text-sm font-medium text-center">Calça</p>
             </div>

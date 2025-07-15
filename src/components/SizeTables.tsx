@@ -1,6 +1,12 @@
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { ChevronDown, ChevronUp } from "lucide-react"
 
 const SizeTables = () => {
+  const [jacketExpanded, setJacketExpanded] = useState(false)
+  const [pantsExpanded, setPantsExpanded] = useState(false)
   // Dados da tabela de casacos (baseado na imagem fornecida)
   const jacketSizes = [
     { tamanho: "1", altura: "40", largura: "33", manga: "32" },
@@ -121,6 +127,12 @@ const SizeTables = () => {
     }
   ]
 
+  const initialJacketSizes = jacketSizes.slice(0, 7) // até o tamanho 12
+  const remainingJacketSizes = jacketSizes.slice(7)
+
+  const initialPantsSizes = pantsSizes.slice(0, 7) // até o tamanho 12
+  const remainingPantsSizes = pantsSizes.slice(7)
+
   return (
     <div className="grid md:grid-cols-2 gap-8 animate-fade-in">
       {/* Tabela de Casacos */}
@@ -150,7 +162,7 @@ const SizeTables = () => {
                 </tr>
               </thead>
               <tbody>
-                {jacketSizes.map((size, index) => (
+                {initialJacketSizes.map((size, index) => (
                   <tr
                     key={size.tamanho}
                     className={
@@ -173,8 +185,56 @@ const SizeTables = () => {
                     </td>
                   </tr>
                 ))}
+                <Collapsible open={jacketExpanded} onOpenChange={setJacketExpanded}>
+                  <CollapsibleContent className="animate-accordion-down">
+                    {remainingJacketSizes.map((size, index) => (
+                      <tr
+                        key={size.tamanho}
+                        className={
+                          (index + initialJacketSizes.length) % 2 === 0 ? "bg-background" : "bg-muted/20"
+                        }
+                      >
+                        <td className="p-2 sm:p-3 font-bold text-center">
+                          <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary text-primary-foreground text-sm sm:text-base font-bold">
+                            {size.tamanho}
+                          </span>
+                        </td>
+                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+                          {size.altura}
+                        </td>
+                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+                          {size.largura}
+                        </td>
+                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+                          {size.manga}
+                        </td>
+                      </tr>
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
               </tbody>
             </table>
+          </div>
+          <div className="p-4 border-t">
+            <CollapsibleTrigger asChild>
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => setJacketExpanded(!jacketExpanded)}
+              >
+                {jacketExpanded ? (
+                  <>
+                    <ChevronUp className="w-4 h-4 mr-2" />
+                    Ver Menos
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="w-4 h-4 mr-2" />
+                    Ver Tudo
+                  </>
+                )}
+              </Button>
+            </CollapsibleTrigger>
           </div>
         </CardContent>
       </Card>
@@ -209,7 +269,7 @@ const SizeTables = () => {
                 </tr>
               </thead>
               <tbody>
-                {pantsSizes.map((size, index) => (
+                {initialPantsSizes.map((size, index) => (
                   <tr
                     key={size.tamanho}
                     className={
@@ -235,8 +295,59 @@ const SizeTables = () => {
                     </td>
                   </tr>
                 ))}
+                <Collapsible open={pantsExpanded} onOpenChange={setPantsExpanded}>
+                  <CollapsibleContent className="animate-accordion-down">
+                    {remainingPantsSizes.map((size, index) => (
+                      <tr
+                        key={size.tamanho}
+                        className={
+                          (index + initialPantsSizes.length) % 2 === 0 ? "bg-background" : "bg-muted/20"
+                        }
+                      >
+                        <td className="p-2 sm:p-3 font-bold text-center">
+                          <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-secondary text-secondary-foreground text-sm sm:text-base font-bold">
+                            {size.tamanho}
+                          </span>
+                        </td>
+                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+                          {size.cintura}
+                        </td>
+                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+                          {size.quadril}
+                        </td>
+                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+                          {size.entreperna}
+                        </td>
+                        <td className="p-2 sm:p-3 text-center text-sm sm:text-base">
+                          {size.comprimento}
+                        </td>
+                      </tr>
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
               </tbody>
             </table>
+          </div>
+          <div className="p-4 border-t">
+            <CollapsibleTrigger asChild>
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => setPantsExpanded(!pantsExpanded)}
+              >
+                {pantsExpanded ? (
+                  <>
+                    <ChevronUp className="w-4 h-4 mr-2" />
+                    Ver Menos
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="w-4 h-4 mr-2" />
+                    Ver Tudo
+                  </>
+                )}
+              </Button>
+            </CollapsibleTrigger>
           </div>
         </CardContent>
       </Card>

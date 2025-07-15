@@ -293,20 +293,20 @@ const SizeTables = () => {
           <h3 className="text-lg sm:text-xl font-bold text-center mb-6">
             Referência de medidas da tabela
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center justify-items-center">
-            <div className="flex flex-col items-center space-y-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-0 items-center justify-items-center">
+            <div className="flex flex-col items-center space-y-2 sm:space-y-4">
               <img 
                 src={medidasCasaco} 
                 alt="Referência de medidas para casacos" 
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-[300px] sm:max-w-[380px] h-auto object-contain"
               />
               <p className="text-sm font-medium text-center">Casaco</p>
             </div>
-            <div className="flex flex-col items-center space-y-2">
+            <div className="flex flex-col items-center space-y-2 sm:space-y-4">
               <img 
                 src={medidasCalca} 
                 alt="Referência de medidas para calças" 
-                className="w-full max-w-[300px] h-auto object-contain"
+                className="w-full max-w-[300px] sm:max-w-[380px] h-auto object-contain"
               />
               <p className="text-sm font-medium text-center">Calça</p>
             </div>

@@ -49,17 +49,7 @@ const Showcase = () => {
       id: 1,
       name: "Conjunto Rosa Borboleta",
       images: [pijama1a, pijama1b],
-      availableSizes: [
-        "1",
-        "2",
-        "3",
-        "4",
-        "6",
-        "8",
-        "10",
-        "GG",
-        "Sob encomenda"
-      ]
+      availableSizes: ["1", "2", "3", "4", "6", "10", "GG", "Sob encomenda"]
     },
     {
       id: 2,

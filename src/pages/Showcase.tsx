@@ -49,19 +49,19 @@ const Showcase = () => {
       id: 1,
       name: "Conjunto Rosa Borboleta",
       images: [pijama1a, pijama1b],
-      availableSizes: ["2", "4", "6", "8", "10", "12", "14", "M"]
+      availableSizes: ["2", "3", "4", "6", "8", "10", "GG", "Sob encomenda"]
     },
     {
       id: 2,
       name: "Conjunto Dinossauro Bege",
       images: [pijama2a, pijama2b],
-      availableSizes: ["3", "4", "6", "8", "12", "16", "G", "GG", "Sob encomenda"]
+      availableSizes: ["Sob encomenda"]
     },
     {
       id: 3,
       name: "Conjunto Coelho Rosa",
       images: [pijama3a, pijama3b],
-      availableSizes: ["1", "2", "3", "4", "6", "8", "10", "12", "P", "M"]
+      availableSizes: ["2", "4"]
     },
     {
       id: 4,
@@ -91,13 +91,36 @@ const Showcase = () => {
       id: 8,
       name: "Conjunto Nuvenzinha",
       images: [pijama8a, pijama8b],
-      availableSizes: ["2", "4", "6", "8", "10", "12", "14", "16", "P", "M", "G"]
+      availableSizes: [
+        "2",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12",
+        "14",
+        "16",
+        "P",
+        "M",
+        "G"
+      ]
     },
     {
       id: 9,
       name: "Conjunto Urso de Férias",
       images: [pijama9a, pijama9b],
-      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16", "PP", "Sob encomenda"]
+      availableSizes: [
+        "1",
+        "3",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12",
+        "16",
+        "PP",
+        "Sob encomenda"
+      ]
     },
     {
       id: 10,
@@ -115,9 +138,25 @@ const Showcase = () => {
       id: 12,
       name: "Conjunto Aviãozinho",
       images: [pijama12a, pijama12b],
-      availableSizes: ["1", "2", "3", "4", "6", "8", "10", "12", "14", "16", "PP", "P", "M", "G", "GG"]
+      availableSizes: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "8",
+        "10",
+        "12",
+        "14",
+        "16",
+        "PP",
+        "P",
+        "M",
+        "G",
+        "GG"
+      ]
     }
-  ];
+  ]
 
   // Filtrar produtos por tamanho
   const filteredProducts =

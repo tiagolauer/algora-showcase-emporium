@@ -49,13 +49,23 @@ const Showcase = () => {
       id: 1,
       name: "Conjunto Rosa Borboleta",
       images: [pijama1a, pijama1b],
-      availableSizes: ["2", "3", "4", "6", "8", "10", "GG", "Sob encomenda"]
+      availableSizes: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "8",
+        "10",
+        "GG",
+        "Sob encomenda"
+      ]
     },
     {
       id: 2,
       name: "Conjunto Dinossauro Bege",
       images: [pijama2a, pijama2b],
-      availableSizes: ["Sob encomenda"]
+      availableSizes: ["4", "6", "10", "Sob encomenda"]
     },
     {
       id: 3,
@@ -67,94 +77,55 @@ const Showcase = () => {
       id: 4,
       name: "Conjunto Urso com Coração",
       images: [pijama4a, pijama4b],
-      availableSizes: ["2", "4", "6", "8", "10", "12", "G"]
+      availableSizes: ["2"]
     },
     {
       id: 5,
       name: "Conjunto Dinossauro Espacial",
       images: [pijama5a, pijama5b],
-      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16", "PP", "P"]
+      availableSizes: ["6", "8"]
     },
     {
       id: 6,
       name: "Conjunto Coração Roxo",
       images: [pijama6a, pijama6b],
-      availableSizes: ["4", "6", "8", "10", "12", "14", "16", "GG"]
+      availableSizes: ["1", "2", "4", "6"]
     },
     {
       id: 7,
       name: "Conjunto Urso Rosa",
       images: [pijama7a, pijama7b],
-      availableSizes: ["1", "2", "3", "4", "6", "8", "10", "12", "14", "16"]
+      availableSizes: ["1", "2", "3", "8", "10", "Sob encomenda"]
     },
     {
       id: 8,
       name: "Conjunto Nuvenzinha",
       images: [pijama8a, pijama8b],
-      availableSizes: [
-        "2",
-        "4",
-        "6",
-        "8",
-        "10",
-        "12",
-        "14",
-        "16",
-        "P",
-        "M",
-        "G"
-      ]
+      availableSizes: ["2", "3", "6", "8", "14", "Sob encomenda"]
     },
     {
       id: 9,
       name: "Conjunto Urso de Férias",
       images: [pijama9a, pijama9b],
-      availableSizes: [
-        "1",
-        "3",
-        "4",
-        "6",
-        "8",
-        "10",
-        "12",
-        "16",
-        "PP",
-        "Sob encomenda"
-      ]
+      availableSizes: ["2", "4", "Sob encomenda"]
     },
     {
       id: 10,
       name: "Conjunto Carrinho",
       images: [pijama10a, pijama10b],
-      availableSizes: ["2", "4", "6", "8", "10", "12", "14", "16", "M", "G"]
+      availableSizes: ["4", "8", "10"]
     },
     {
       id: 11,
       name: "Conjunto Dinossauro Esportivo",
       images: [pijama11a, pijama11b],
-      availableSizes: ["1", "3", "4", "6", "8", "10", "12", "16", "GG"]
+      availableSizes: ["1", "4"]
     },
     {
       id: 12,
       name: "Conjunto Aviãozinho",
       images: [pijama12a, pijama12b],
-      availableSizes: [
-        "1",
-        "2",
-        "3",
-        "4",
-        "6",
-        "8",
-        "10",
-        "12",
-        "14",
-        "16",
-        "PP",
-        "P",
-        "M",
-        "G",
-        "GG"
-      ]
+      availableSizes: ["2"]
     }
   ]
 

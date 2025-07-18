@@ -25,7 +25,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 300); // duração da animação
+    }, 200); // duração da animação reduzida
   };
 
   const prevImage = (e: React.MouseEvent) => {
@@ -37,7 +37,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
       setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 300); // duração da animação
+    }, 200); // duração da animação reduzida
   };
 
   const handleCardClick = () => {
@@ -64,9 +64,11 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX - touchEndX > 50) {
-      nextImage(e as any);
+      // Mudança imediata para touch
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
     } else if (touchEndX - touchStartX > 50) {
-      prevImage(e as any);
+      // Mudança imediata para touch
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
     }
   };
 
@@ -85,7 +87,7 @@ const ProductCard = ({ id, name, images, availableSizes, onViewDetails }: Produc
           <img
             src={images[currentImageIndex]}
             alt={`${name} - Image ${currentImageIndex + 1}`}
-            className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${animating ? (animationDirection === "left" ? "animate-slide-out-left" : animationDirection === "right" ? "animate-slide-out-right" : "") : ""}`}
+            className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${animating ? (animationDirection === "left" ? "animate-slide-fade-left" : animationDirection === "right" ? "animate-slide-fade-right" : "") : "animate-slide-fade-in"}`}
           />
           
           {/* Controles do Carrossel */}

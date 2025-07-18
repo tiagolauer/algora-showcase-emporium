@@ -49,7 +49,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
       setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 300);
+    }, 200);
   };
 
   const prevImage = () => {
@@ -60,7 +60,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
       setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
       setAnimating(false);
       setAnimationDirection(null);
-    }, 300);
+    }, 200);
   };
 
   return (
@@ -95,16 +95,18 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
                 const start = (window as any).modalTouchStartX || 0;
                 const end = (window as any).modalTouchEndX || 0;
                 if (start - end > 50) {
-                  nextImage();
+                  // Mudança imediata para touch
+                  setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
                 } else if (end - start > 50) {
-                  prevImage();
+                  // Mudança imediata para touch
+                  setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
                 }
               }}
             >
               <img
                 src={product.images[currentImageIndex]}
                 alt={`${product.name} - Image ${currentImageIndex + 1}`}
-                className={`w-full h-full object-cover transition-transform duration-300 ${animating ? (animationDirection === "left" ? "animate-slide-out-left" : "animate-slide-out-right") : ""}`}
+                className={`w-full h-full object-cover transition-transform duration-300 ${animating ? (animationDirection === "left" ? "animate-slide-fade-left" : "animate-slide-fade-right") : "animate-slide-fade-in"}`}
                 style={!isMobile ? zoomStyle : {}}
                 onMouseMove={!isMobile ? handleMouseMove : undefined}
                 onMouseLeave={!isMobile ? handleMouseLeave : undefined}

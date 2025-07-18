@@ -43,6 +43,16 @@ const Showcase = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  console.log("Tá curioso, paizão? Chama no whats aí, meu querido: +55 47 98402-4581")
+  console.log("Tá curioso, paizão? Chama no whats aí, meu querido: +55 47 98402-4581")
+  console.log("Tá curioso, paizão? Chama no whats aí, meu querido: +55 47 98402-4581")
+  console.log("Tá curioso, paizão? Chama no whats aí, meu querido: +55 47 98402-4581")
+  console.log("Tá curioso, paizão? Chama no whats aí, meu querido: +55 47 98402-4581")
+  console.log("Tá curioso, paizão? Chama no whats aí, meu querido: +55 47 98402-4581")
+  console.log("Tá curioso, paizão? Chama no whats aí, meu querido: +55 47 98402-4581")
+  console.log("Tá curioso, paizão? Chama no whats aí, meu querido: +55 47 98402-4581")
+  console.log("Tá curioso, paizão? Chama no whats aí, meu querido: +55 47 98402-4581")
+
   // Dados dos produtos
   const products = [
     {

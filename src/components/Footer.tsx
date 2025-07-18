@@ -47,6 +47,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-center text-xs sm:text-sm text-muted-foreground pt-4 border-t border-border w-full">
             <p>&copy; {new Date().getFullYear()} Algora. Todos os direitos reservados.</p>
+            <p>Dev with ❤️ by <a href="https://www.instagram.com/tiago.lauer" target="blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>Tiago Lauer</a></p>
           </div>
         </div>
       </div>

@@ -16,15 +16,16 @@ const SizeTables = () => {
 
   // Dados para tabela de calças (baseado nas proporções dos casacos)
   const pantsSizes = [
-    { tamanho: "1", cintura: "58", quadril: "68", entrepierna: "65", comprimento: "88" },
-    { tamanho: "2", cintura: "62", quadril: "72", entrepierna: "67", comprimento: "90" },
-    { tamanho: "4", cintura: "68", quadril: "78", entrepierna: "70", comprimento: "94" },
-    { tamanho: "6", cintura: "72", quadril: "82", entrepierna: "72", comprimento: "96" },
-    { tamanho: "8", cintura: "76", quadril: "86", entrepierna: "74", comprimento: "98" },
-    { tamanho: "10", cintura: "80", quadril: "90", entrepierna: "76", comprimento: "100" },
-    { tamanho: "12", cintura: "84", quadril: "94", entrepierna: "78", comprimento: "102" },
-    { tamanho: "14", cintura: "88", quadril: "98", entrepierna: "80", comprimento: "104" },
-    { tamanho: "16", cintura: "92", quadril: "102", entrepierna: "82", comprimento: "106" }
+    { tamanho: "1", cintura: "20", entrepierna: "30", comprimento: "46" },
+    { tamanho: "2", cintura: "20", entrepierna: "37", comprimento: "53" },
+    { tamanho: "3", cintura: "21", entrepierna: "40", comprimento: "58" },
+    { tamanho: "4", cintura: "21", entrepierna: "46", comprimento: "66" },
+    { tamanho: "6", cintura: "23", entrepierna: "54", comprimento: "73" },
+    { tamanho: "8", cintura: "23", entrepierna: "54", comprimento: "73" },
+    { tamanho: "10", cintura: "25", entrepierna: "58", comprimento: "79" },
+    { tamanho: "12", cintura: "27", entrepierna: "78", comprimento: "102" },
+    { tamanho: "14", cintura: "31", entrepierna: "80", comprimento: "104" },
+    { tamanho: "16", cintura: "32", entrepierna: "82", comprimento: "106" }
   ];
 
   return (
@@ -76,8 +77,7 @@ const SizeTables = () => {
                  <tr className="bg-muted/50">
                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Tamanho</th>
                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Cintura (cm)</th>
-                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Quadril (cm)</th>
-                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Entrepierna (cm)</th>
+                   <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Entreperna (cm)</th>
                    <th className="p-2 sm:p-3 text-center font-semibold text-xs sm:text-sm">Comprimento (cm)</th>
                  </tr>
                </thead>
@@ -90,7 +90,6 @@ const SizeTables = () => {
                        </span>
                      </td>
                      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.cintura}</td>
-                     <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.quadril}</td>
                      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.entrepierna}</td>
                      <td className="p-2 sm:p-3 text-center text-sm sm:text-base">{size.comprimento}</td>
                    </tr>

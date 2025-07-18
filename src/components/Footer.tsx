@@ -13,6 +13,7 @@ const Footer = () => {
               alt="Algora Logo" 
               className="h-24 w-auto"
             />
+            <span className="text-xl font-bold text-foreground">Algora</span>
           </div>
 
           {/* Texto descritivo */}
